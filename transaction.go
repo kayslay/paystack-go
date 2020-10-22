@@ -45,7 +45,7 @@ type Transaction struct {
 	ID              int                    `json:"id,omitempty"`
 	CreatedAt       string                 `json:"createdAt,omitempty"`
 	Domain          string                 `json:"domain,omitempty"`
-	Metadata        map[string]interface{}                 `json:"metadata,omitempty"` //TODO: why is transaction metadata a string?
+	Metadata        interface{}             `json:"metadata,omitempty"` //TODO: why is transaction metadata a string?
 	Status          string                 `json:"status,omitempty"`
 	Reference       string                 `json:"reference,omitempty"`
 	Amount          float32                `json:"amount,omitempty"`
@@ -78,6 +78,7 @@ type Authorization struct {
 	Brand             string `json:"brand,omitempty"`
 	Resusable         bool   `json:"reusable,omitempty"`
 	Signature         string `json:"signature,omitempty"`
+	AccountName       string `json:"account_name,omitempty"`
 }
 
 // TransactionTimeline represents a timeline of events in a transaction session

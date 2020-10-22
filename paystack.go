@@ -20,14 +20,14 @@ const (
 	version = "0.1.0"
 
 	// defaultHTTPTimeout is the default timeout on the http client
-	defaultHTTPTimeout = 60 * time.Second
+	defaultHTTPTimeout = 25 * time.Second
 
 	// base URL for all Paystack API requests
 	baseURL = "https://api.paystack.co"
 
 	// User agent used when communicating with the Paystack API.
 	// userAgent = "paystack-go/" + version
-	userAgent = "Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) Chrome/v1.0.0 Safari/538.1"
+	userAgent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36"
 )
 
 type service struct {
@@ -250,7 +250,7 @@ func (c *Client) decodeResponse(httpResp *http.Response, v interface{}) error {
 		if c.LoggingEnabled {
 			c.Log.Printf("Paystack error: %+v", err)
 		}
-		return newAPIError(httpResp)
+		return newAPIError(httpResp, respBody)
 	}
 
 	if c.LoggingEnabled {
